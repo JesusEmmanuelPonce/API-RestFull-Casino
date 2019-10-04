@@ -1,40 +1,42 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
 const Usuarios = require('./Usuarios');
+const Apuestas = require('./Apuestas');
 
 const Preguntas = db.define('preguntas', {
-    id:{
+    id_question:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
 
-    pregunta: {
+    question: {
         type: Sequelize.STRING
     },
 
-    a_pregunta: {
+    aOption: {
         type: Sequelize.STRING
     },
 
-    b_pregunta: {
-        type: Sequelize.STRING,
+    bOption: {
+        type: Sequelize.STRING
     },
 
-    c_pregunta: {
-        type: Sequelize.STRING,
+    cOption: {
+        type: Sequelize.STRING
     },
 
-    correcta: {
-        type: Sequelize.STRING,
+    correctAnswer: {
+        type: Sequelize.INTEGER
     },
 
-    status:{
+    questionStatus:{
         type:  Sequelize.INTEGER
     }
 });
 
-Preguntas.hasMany(Usuarios, {foreingKey: 'id_pregunta', sourceKey: 'id'});
-Usuarios.belongsTo(Preguntas, {foreingKey: 'id_pregunta', sourceKey: 'id'});
+Usuarios.hasMany(Apuestas);
+Preguntas.hasMany(Apuestas);
+
 
 module.exports = Preguntas;

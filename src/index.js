@@ -2,13 +2,16 @@ const express = require('express');
 const app = express();
 const routes = require('./routes');
 
-//Conexion a bd
+//Connect a bd
 const db = require('./config/db');
 
 //Models
-/*require('./models/Usuarios');
+require('./models/Usuarios');
 require('./models/Preguntas');
-db.sync()
+require('./models/Apuestas');
+
+//Create DB
+/*db.sync()
 .then(() => console.log('conectado'))
 .catch(error => console.log(error))
 */

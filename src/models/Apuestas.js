@@ -1,14 +1,32 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
 
-export const Apuestas = db.define('apuestas', {
-    id_apuestas: {
-        type: Sequelize.STRING,
+const Apuestas = db.define('apuestas', {
+    id_bets: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement:true
+        autoIncrement: true
     },
-    respuesta: Sequelize.STRING,
-    resultado: Sequelize.STRING,
-    cantidad:  Sequelize.INTEGER,
-    cantidad_total: Sequelize.INTEGER
-})
+
+    chosenOption:{
+        type: Sequelize.INTEGER
+    },
+
+    isGift:{
+        type: Sequelize.BOOLEAN
+    },
+
+    amount: {
+        type: Sequelize.INTEGER
+    },
+
+    betTime:{
+        type: Sequelize.DATE
+    },
+
+    giftTime:{
+        type: Sequelize.DATE
+    }
+});
+
+module.exports = Apuestas;
