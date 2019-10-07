@@ -28,5 +28,11 @@ module.exports = function(){
     //Editar Status
     router.post('/questions/:id',controllers.EditarStatusPregunta);
 
+    //Insertar apuestas
+    router.post('/do-bets',controllers.InsertApuesta);
+
+    //Ver apuestas con usuarios
+    router.get('/apuestas',controllers.ApuestasUsuarios);
+
     return router;
 }
