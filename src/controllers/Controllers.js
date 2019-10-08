@@ -107,15 +107,18 @@ exports.InsertApuesta = async(req,res) =>{
 
 //Consultar Apuestas con Usuario
 exports.ApuestasUsuarios = async(req, res) => {
-   /*try{
+   try{
     const apuestas = await Apuestas.findAll({
         include:[{
             model: Usuario
+        },
+        {
+            model: Preguntas
         }
      ]
     })
      res.json({apuestas});
    }catch(e){
     console.log(e);
-   }*/
+   }
 }

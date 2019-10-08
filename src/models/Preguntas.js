@@ -36,7 +36,12 @@ const Preguntas = db.define('preguntas', {
 });
 
 Usuarios.hasMany(Apuestas);
+Apuestas.belongsTo(Usuarios);
 Preguntas.hasMany(Apuestas);
+Apuestas.belongsTo(Preguntas);
+
+/*Apuestas.hasMany(Usuarios);
+Preguntas.hasMany(Apuestas);*/
 
 
 module.exports = Preguntas;

@@ -11,10 +11,10 @@ require('./models/Preguntas');
 require('./models/Apuestas');
 
 //Create DB
-/*db.sync()
+db.sync()
 .then(() => console.log('conectado'))
 .catch(error => console.log(error))
-*/
+
 
 //Settings
 app.set('port', process.env.PORT || 3000);

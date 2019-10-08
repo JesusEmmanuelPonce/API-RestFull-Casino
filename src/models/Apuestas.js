@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
+const Usuarios = require('./Usuarios');
+const Preguntas = require('./Preguntas');
 
 const Apuestas = db.define('apuestas', {
     id_bets: {
@@ -28,5 +30,11 @@ const Apuestas = db.define('apuestas', {
         type: Sequelize.DATE
     }
 });
+
+// Usuarios.hasMany(Apuestas);
+
+// Apuestas.associate = (models) => {
+//     Apuestas.belongsTo(models.Usuarios);//hasMany depending on your relationship
+// };
 
 module.exports = Apuestas;

@@ -32,7 +32,7 @@ module.exports = function(){
     router.post('/do-bets',controllers.InsertApuesta);
 
     //Ver apuestas con usuarios
-    router.get('/apuestas',controllers.ApuestasUsuarios);
+    router.get('/bets',controllers.ApuestasUsuarios);
 
     return router;
 }
