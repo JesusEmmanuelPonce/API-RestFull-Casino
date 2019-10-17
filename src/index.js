@@ -11,13 +11,13 @@ require('./models/Preguntas');
 require('./models/Apuestas');
 
 //Create DB
-db.sync()
-.then(() => console.log('conectado'))
-.catch(error => console.log(error))
+// db.sync()
+//     .then(() => console.log('conectado'))
+//     .catch(error => console.log(error))
 
 
 //Settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 //Middleware
 app.use(express.json());

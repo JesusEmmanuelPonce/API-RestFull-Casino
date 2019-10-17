@@ -10,23 +10,25 @@ const Apuestas = db.define('apuestas', {
         autoIncrement: true
     },
 
-    chosenOption:{
+    chosenOption: {
         type: Sequelize.INTEGER
     },
 
-    isGift:{
-        type: Sequelize.BOOLEAN
+    isGift: {
+        type: Sequelize.INTEGER
     },
 
     amount: {
         type: Sequelize.INTEGER
     },
 
-    betTime:{
-        type: Sequelize.DATE
+    betTime: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
     },
 
-    giftTime:{
+    giftTime: {
         type: Sequelize.DATE
     }
 });

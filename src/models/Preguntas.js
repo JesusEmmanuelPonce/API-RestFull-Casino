@@ -4,7 +4,7 @@ const Usuarios = require('./Usuarios');
 const Apuestas = require('./Apuestas');
 
 const Preguntas = db.define('preguntas', {
-    id_question:{
+    id_question: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -30,8 +30,8 @@ const Preguntas = db.define('preguntas', {
         type: Sequelize.INTEGER
     },
 
-    questionStatus:{
-        type:  Sequelize.INTEGER
+    questionStatus: {
+        type: Sequelize.INTEGER
     }
 });
 
