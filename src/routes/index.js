@@ -43,10 +43,11 @@ module.exports = function () {
     //Ultimo ID de apuesta
     router.get('/lastIdBets', controllers.ConsultaIdApuesta);
 
-    //Ultmo ID de usuario
+    //Ultimo ID de usuario
     router.get('/lastIdUser', controllers.ConsultaIdUsuario);
 
-
+    //Editar el premio reclamado
+    router.post('/claim', controllers.Reclamar);
 
     return router;
 }

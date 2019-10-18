@@ -146,14 +146,32 @@ exports.InsertApuesta = async (req, res) => {
 		preguntaIdQuestion
 	} = req.body;
 	try {
+		let fecha = new Date();
+
+		let h = fecha.getHours();
+		let m = fecha.getMinutes();
+		let s = fecha.getSeconds();
+
+		if (h < 10) {
+			h = '0' + h;
+		}
+		if (m < 10) {
+			m = '0' + m;
+		}
+		if (m < 10) {
+			s = '0' + s;
+		}
+
+		let time = h + ':' + m + ':' + s;
+
 		const apuesta = await Apuestas.create({
-			chosenOption,
-			isGift,
-			amount,
-			betTime,
-			giftTime,
-			usuarioIdUser,
-			preguntaIdQuestion
+			chosenOption: chosenOption,
+			isGift: isGift,
+			amount: amount,
+			betTime: time,
+			giftTime: giftTime,
+			usuarioIdUser: usuarioIdUser,
+			preguntaIdQuestion: preguntaIdQuestion
 		});
 		res.json({
 			msg: 'Apuesta insertada'
@@ -186,7 +204,7 @@ exports.ApuestasUsuarios = async (req, res) => {
 			attributes: ['id_bets', 'amount', 'chosenOption']
 		});
 
-		// const arrayBets = JSON.stringify(apuestas);
+		// {const arrayBets = JSON.stringify(apuestas);
 		// console.log("Prueba: ", apuestas[0].pregunta.correctAnswer);
 
 		// // res.send(apuestas)
@@ -194,7 +212,7 @@ exports.ApuestasUsuarios = async (req, res) => {
 		// 	correctAnswer: apuestas[0].pregunta.correctAnswer
 		// });
 
-		// console.log(typeof arrayBets);
+		// console.log(typeof arrayBets);}
 
 		res.json({
 			apuestas
@@ -257,7 +275,7 @@ exports.Comparar = async (req, res) => {
 
 			include: [{
 					model: Usuario,
-					attributes: ['id_user', 'nick']
+					attributes: ['id_user', 'name', 'nick']
 				},
 				{
 					model: Preguntas,
@@ -297,7 +315,7 @@ exports.ConsultaUP = async (req, res) => {
 		const usuarioPreguntas = await Apuestas.findAll({
 			include: [{
 					model: Usuario,
-					attributes: ['id_user', 'nick']
+					attributes: ['id_user', 'name', 'nick']
 				},
 				{
 					model: Preguntas,
@@ -318,6 +336,49 @@ exports.ConsultaUP = async (req, res) => {
 		console.log(e);
 		res.status(500).json({
 			message: 'Error '
+		});
+	}
+};
+
+exports.Reclamar = async (req, res) => {
+	const {
+		id_bets,
+		isGift
+	} = req.body;
+	try {
+		let fecha = new Date();
+
+		let h = fecha.getHours();
+		let m = fecha.getMinutes();
+		let s = fecha.getSeconds();
+
+		if (h < 10) {
+			h = '0' + h;
+		}
+		if (m < 10) {
+			m = '0' + m;
+		}
+		if (m < 10) {
+			s = '0' + s;
+		}
+
+		let time = h + ':' + m + ':' + s;
+
+		const cambiarFecha = await Apuestas.update({
+			giftTime: time,
+			isGift: isGift
+		}, {
+			where: {
+				id_bets: id_bets
+			}
+		});
+		res.json({
+			msg: 'Actualizado'
+		});
+	} catch (e) {
+		console.log(e);
+		res.status(500).json({
+			message: 'Error en el servidor'
 		});
 	}
 };

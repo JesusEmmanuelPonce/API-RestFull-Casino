@@ -23,20 +23,12 @@ const Apuestas = db.define('apuestas', {
     },
 
     betTime: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.DATE
     },
 
     giftTime: {
         type: Sequelize.DATE
     }
 });
-
-// Usuarios.hasMany(Apuestas);
-
-// Apuestas.associate = (models) => {
-//     Apuestas.belongsTo(models.Usuarios);//hasMany depending on your relationship
-// };
 
 module.exports = Apuestas;
